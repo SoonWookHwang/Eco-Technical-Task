@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class EmployeeController {
+
   private final EmployeeService employeeService;
 
   /*
   특정 사원의 현재 정보 조회 가능한 API 구현
    */
   @GetMapping("/employee/{employeeId}")
-  public Employee findById(@PathVariable Integer employeeId){
+  public Employee findById(@PathVariable Integer employeeId) {
     return employeeService.findById(employeeId);
   }
 
@@ -28,7 +29,7 @@ public class EmployeeController {
   특정 사원의 이력 정보 조회 가능한 API 구현
    */
   @GetMapping("/employee/job/history/{employeeId}")
-  public List<JobHistory> findAllJobHistoryByEmployeeId(@PathVariable Integer employeeId){
+  public List<JobHistory> findAllJobHistoryByEmployeeId(@PathVariable Integer employeeId) {
     return employeeService.findAllHistoryByEmployeeId(employeeId);
   }
 
@@ -39,10 +40,10 @@ public class EmployeeController {
   public String updateSalaryAndEmployeeByDepartmentIdAndIncreaseRate(
       @RequestParam Integer departmentId,
       @RequestParam String increaseRate) {
-    if(isNumber(increaseRate)) {
+    if (isNumber(increaseRate)) {
       return employeeService.updateSalaryAndEmployeeByDepartmentIdAndIncreaseRate(departmentId,
           Integer.parseInt(increaseRate));
-    }else{
+    } else {
       return "인상률은 정수로만 입력이 가능합니다.";
     }
   }
@@ -51,8 +52,7 @@ public class EmployeeController {
     boolean result = true;
     if (str == null || str.length() == 0) {
       result = false;
-    }
-    else {
+    } else {
       for (int i = 0; i < str.length(); i++) {
         int c = (int) str.charAt(i);
         if (c < 48 || c > 57) {

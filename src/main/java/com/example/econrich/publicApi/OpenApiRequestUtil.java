@@ -15,7 +15,8 @@ public class OpenApiRequestUtil {
         .header("Content-Type", "application/json")
         .build();
 
-    HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+    HttpResponse<String> httpResponse = client.send(httpRequest,
+        HttpResponse.BodyHandlers.ofString());
     int statusCode = httpResponse.statusCode();
 
     String responseBody = httpResponse.body();

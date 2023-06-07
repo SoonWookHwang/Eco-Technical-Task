@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="job_history")
+@Table(name = "job_history")
 @Data
 public class JobHistory {
 
@@ -19,22 +19,22 @@ public class JobHistory {
   private JobHistoryId jobHistoryId;
 
   @ManyToOne
-  @JoinColumn(name="job_id", insertable=false, updatable=false)
+  @JoinColumn(name = "job_id", insertable = false, updatable = false)
   private Job job;
 
   @ManyToOne
-  @JoinColumn(name="department_id", insertable=false, updatable=false)
+  @JoinColumn(name = "department_id", insertable = false, updatable = false)
   private Department department;
 
   @ManyToOne
-  @JoinColumn(name="employee_id", insertable=false, updatable=false)
+  @JoinColumn(name = "employee_id", insertable = false, updatable = false)
   @JsonIgnore
   private Employee employee;
 
-  @Column(name="start_date", insertable=false, updatable=false)
+  @Column(name = "start_date", insertable = false, updatable = false)
   private Date startDate;
 
-  @Column(name="end_date")
+  @Column(name = "end_date")
   private Date endDate;
 
 

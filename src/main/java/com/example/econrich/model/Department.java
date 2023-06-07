@@ -17,19 +17,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Department {
+
   @Id
-  @Column(name="department_id")
+  @Column(name = "department_id")
   private Integer departmentId;
 
-  @Column(name="department_name")
+  @Column(name = "department_name")
   private String departmentName;
 
   @ManyToOne
-  @JoinColumn(name="manager_id")
+  @JoinColumn(name = "manager_id")
   @JsonIgnore
   private Employee manager;
 
   @ManyToOne
-  @JoinColumn(name="location_id")
+  @JoinColumn(name = "location_id")
   private Location location;
 }

@@ -18,24 +18,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {
+
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
-  @Column(name="location_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "location_id")
   private int locationId;
 
-  @Column(name="street_address")
+  @Column(name = "street_address")
   private String streetAddress;
 
-  @Column(name="postal_code")
+  @Column(name = "postal_code")
   private String postalCode;
 
-  @Column(name="city")
+  @Column(name = "city")
   private String city;
 
-  @Column(name="state_province",nullable = true)
+  @Column(name = "state_province")
   private String stateProvince;
 
   @ManyToOne
-  @JoinColumn(name="country_id")
+  @JoinColumn(name = "country_id")
   private Country country;
 }

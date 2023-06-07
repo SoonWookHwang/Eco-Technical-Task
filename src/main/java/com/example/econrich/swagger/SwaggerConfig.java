@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -24,11 +23,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAsync
 @EnableWebMvc
 public class SwaggerConfig implements WebMvcConfigurer {
+
   private String version;
   private String title;
 
   @Override
-  public void addResourceHandlers(ResourceHandlerRegistry registry){
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
     registry.addResourceHandler("swagger-ui.html")
         .addResourceLocations("classpath:/META-INF/resources/");
     registry.addResourceHandler("webjars/**")
@@ -47,12 +47,14 @@ public class SwaggerConfig implements WebMvcConfigurer {
         .build()
         .apiInfo(apiInfo(title, version));
   }
+
   private Set<String> getConsumeContentTypes() {
     Set<String> consumes = new HashSet<>();
     consumes.add("application/json;charset=UTF-8");
     consumes.add("application/x-www-form-urlencoded");
     return consumes;
   }
+
   private Set<String> getProduceContentTypes() {
     Set<String> produces = new HashSet<>();
     produces.add("application/json;charset=UTF-8");

@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class AirConditionItem {
+
   private String dataTime;
   private String informCause;
   private String informOverall;
@@ -17,7 +18,8 @@ public class AirConditionItem {
   private String imageUrl6;
 
   @Builder
-  AirConditionItem(String dataTime, String informCause, String informGrade, String informOverall,String imageUrl1, String imageUrl2, String imageUrl3, String imageUrl4,
+  AirConditionItem(String dataTime, String informCause, String informGrade, String informOverall,
+      String imageUrl1, String imageUrl2, String imageUrl3, String imageUrl4,
       String imageUrl5, String imageUrl6) {
     this.dataTime = dataTime;
     this.informCause = informCause;

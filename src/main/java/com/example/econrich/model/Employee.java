@@ -21,49 +21,50 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Slf4j
 public class Employee {
+
   @Id
-  @Column(name="employee_id")
+  @Column(name = "employee_id")
   private int employeeId;
 
-  @Column(name="first_name")
+  @Column(name = "first_name")
   private String firstName;
 
-  @Column(name="last_name")
+  @Column(name = "last_name")
   private String lastName;
 
-  @Column(name="email")
+  @Column(name = "email")
   private String email;
 
-  @Column(name="phone_number")
+  @Column(name = "phone_number")
   private String phoneNumber;
 
-  @Column(name="hire_date")
+  @Column(name = "hire_date")
   private Date hireDate;
 
   @ManyToOne
-  @JoinColumn(name="job_id")
+  @JoinColumn(name = "job_id")
   private Job job;
 
-  @Column(name="salary")
+  @Column(name = "salary")
   private int salary;
 
-  @Column(name="commission_pct",nullable = true)
+  @Column(name = "commission_pct", nullable = true)
   private BigDecimal commissionPct;
 
   @ManyToOne
-  @JoinColumn(name="manager_id",nullable = true)
+  @JoinColumn(name = "manager_id", nullable = true)
   @JsonIgnore
   private Employee manager;
 
   @ManyToOne
-  @JoinColumn(name="department_id",nullable = true)
+  @JoinColumn(name = "department_id", nullable = true)
   private Department department;
 
 
-  public void updateSalaryByRate(Employee updateTarget, Integer rate){
+  public void updateSalaryByRate(Employee updateTarget, Integer rate) {
     BigDecimal newSalary = BigDecimal.valueOf(updateTarget.getSalary())
         .multiply(BigDecimal.valueOf(1 + rate / 100.0));
     updateTarget.setSalary(newSalary.intValue());
-    log.info("----"+updateTarget.getSalary());
+    log.info("----" + updateTarget.getSalary());
   }
 }

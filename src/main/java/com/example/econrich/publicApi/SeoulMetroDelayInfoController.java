@@ -27,8 +27,8 @@ public class SeoulMetroDelayInfoController {
       throws IOException, InterruptedException {
     String url = endPoint + "?serviceKey=" + serviceKey;
 
-      url += "&numOfRows=" + "1" + "&pageNo=" + "1";
-      url += "&lineNum=" + lineNum;
+    url += "&numOfRows=" + "1" + "&pageNo=" + "1";
+    url += "&lineNum=" + lineNum;
     System.out.println(url);
 
     String returnObject = OpenApiRequestUtil.getInfoFromOpenApi(url);
@@ -43,15 +43,17 @@ public class SeoulMetroDelayInfoController {
           .build();
     } else {
       return MetroDelayInfoResponse.builder()
-          .resultMsg(lineNum+ "호선 열차 지연 정보입니다.")
+          .resultMsg(lineNum + "호선 열차 지연 정보입니다.")
           .item(returnObject)
           .build();
     }
   }
+
   @AllArgsConstructor
   @Data
   @Builder
-  static class MetroDelayInfoResponse{
+  static class MetroDelayInfoResponse {
+
     private String resultMsg;
     private String item;
 
